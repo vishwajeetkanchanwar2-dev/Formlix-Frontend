@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="400" height="400">
+  <!-- Background gradient circle -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#5CB85C;stop-opacity:0.15" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <circle cx="50" cy="50" r="48" fill="url(#bgGrad)"/>
+  
+  <!-- Document base with shadow -->
+  <rect x="20" y="15" width="50" height="65" rx="4" fill="#ffffff" stroke="#4A90E2" stroke-width="3" filter="url(#shadow)"/>
+  
+  <!-- Folded corner -->
+  <path d="M 70 15 L 70 28 L 57 28 Z" fill="#E8F4FF" stroke="#4A90E2" stroke-width="3"/>
+  
+  <!-- Chart bars - larger -->
+  <rect x="28" y="45" width="10" height="25" rx="2" fill="#4A90E2"/>
+  <rect x="41" y="36" width="10" height="34" rx="2" fill="#5CB85C"/>
+  <rect x="54" y="40" width="10" height="30" rx="2" fill="#F0AD4E"/>
+  
+  <!-- Text lines - bolder -->
+  <line x1="28" y1="28" x2="58" y2="28" stroke="#4A90E2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="28" y1="35" x2="50" y2="35" stroke="#CBD5E0" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Generate icon - larger and prominent -->
+  <g transform="translate(52, 68)">
+    <circle cx="8" cy="8" r="14" fill="#4A90E2" filter="url(#shadow)"/>
+    <path d="M 8 2 L 8 10 M 8 10 L 5 7 M 8 10 L 11 7" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M 13 5 A 7 7 0 0 0 3 5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>
