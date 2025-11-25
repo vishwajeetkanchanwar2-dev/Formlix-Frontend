@@ -61,25 +61,25 @@ const Navbar = () => {
               <>
                 <Link
                   to="/"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Home
                 </Link>
                 <Link
                   to="/generate-report"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Generate Report
                 </Link>
                 <Link
                   to="/generate-from-content"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   From Content
                 </Link>
                 <Link
                   to="/feedback"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Feedback
                 </Link>
@@ -97,19 +97,19 @@ const Navbar = () => {
               <>
                 <Link
                   to="/"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Home
                 </Link>
                 <Link
                   to="/login"
-                  className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-2 rounded-md text-sm font-medium transition"
+                  className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                 >
                   Register
                 </Link>
@@ -159,28 +159,28 @@ const Navbar = () => {
                   <Link
                     to="/"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     🏠 Home
                   </Link>
                   <Link
                     to="/generate-report"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     📝 Generate Report
                   </Link>
                   <Link
                     to="/generate-from-content"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     📄 From Content
                   </Link>
                   <Link
                     to="/feedback"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     💬 Feedback
                   </Link>
@@ -199,21 +199,21 @@ const Navbar = () => {
                   <Link
                     to="/"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     🏠 Home
                   </Link>
                   <Link
                     to="/login"
                     onClick={closeMobileMenu}
-                    className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2.5 rounded-md text-sm font-medium transition"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
                     onClick={closeMobileMenu}
-                    className="bg-white text-blue-600 hover:bg-gray-100 px-4 py-2.5 rounded-md text-sm font-medium transition mx-4"
+                    className="text-white hover:bg-purple-800 hover:bg-opacity-30 px-3 py-2 rounded-md text-sm font-medium transition"
                   >
                     Register
                   </Link>
