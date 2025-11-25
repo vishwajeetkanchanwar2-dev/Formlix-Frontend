@@ -8,6 +8,7 @@ const Dashboard = () => {
   const isAuthenticated = authService.isAuthenticated();
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showAllFeedbacks, setShowAllFeedbacks] = useState(false); // ✅ NEW STATE
   const [stats, setStats] = useState({
     totalReports: 0,
     totalFeedbacks: 0,
@@ -34,7 +35,6 @@ const Dashboard = () => {
         averageRating = (totalRating / feedbackData.length).toFixed(1);
       }
 
-      // Debug: Backend se kya aa raha hai dekho
       console.log('📊 Stats from backend:', statsResponse.data);
       
       setStats({
@@ -62,6 +62,14 @@ const Dashboard = () => {
   const renderStars = (rating) => {
     return '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
   };
+
+  // ✅ FILTER VALID FEEDBACKS
+  const validFeedbacks = feedbacks.filter(f => f.user?.name);
+  
+  // ✅ DECIDE HOW MANY TO SHOW
+  const feedbacksToShow = showAllFeedbacks 
+    ? validFeedbacks 
+    : validFeedbacks.slice(0, 6);
 
   const features = [
     {
@@ -237,39 +245,64 @@ const Dashboard = () => {
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
               <p className="text-gray-600 mt-4 text-sm sm:text-base">Loading feedbacks...</p>
             </div>
-          ) : feedbacks.filter(f => f.user?.name).length > 0 ? (
+          ) : validFeedbacks.length > 0 ? (
             <>
+              {/* ✅ FEEDBACK CARDS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                {feedbacks
-                  .filter(feedback => feedback.user?.name)
-                  .slice(0, 6)
-                  .map((feedback, index) => (
-                    <div
-                      key={index}
-                      className="bg-white rounded-xl shadow-lg p-5 sm:p-6 hover:shadow-xl transition-all"
-                    >
-                      <div className="flex items-center mb-3 sm:mb-4">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
-                          {feedback.user.name.charAt(0).toUpperCase()}
-                        </div>
-                        <div className="ml-3 min-w-0 flex-1">
-                          <p className="font-semibold text-gray-900 text-sm sm:text-base truncate">
-                            {feedback.user.name}
-                          </p>
-                          <p className="text-yellow-500 text-base sm:text-lg">
-                            {renderStars(feedback.rating)}
-                          </p>
-                        </div>
+                {feedbacksToShow.map((feedback, index) => (
+                  <div
+                    key={index}
+                    className="bg-white rounded-xl shadow-lg p-5 sm:p-6 hover:shadow-xl transition-all"
+                  >
+                    <div className="flex items-center mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg flex-shrink-0">
+                        {feedback.user.name.charAt(0).toUpperCase()}
                       </div>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base break-words">
-                        "{feedback.message}"
-                      </p>
+                      <div className="ml-3 min-w-0 flex-1">
+                        <p className="font-semibold text-gray-900 text-sm sm:text-base truncate">
+                          {feedback.user.name}
+                        </p>
+                        <p className="text-yellow-500 text-base sm:text-lg">
+                          {renderStars(feedback.rating)}
+                        </p>
+                      </div>
                     </div>
-                  ))}
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base break-words">
+                      "{feedback.message}"
+                    </p>
+                  </div>
+                ))}
               </div>
 
-              {isAuthenticated && (
+              {/* ✅ SHOW MORE / SHOW LESS BUTTON */}
+              {validFeedbacks.length > 6 && (
                 <div className="text-center mt-6 sm:mt-8">
+                  <button
+                    onClick={() => setShowAllFeedbacks(!showAllFeedbacks)}
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:from-blue-700 hover:to-purple-700 transition transform hover:scale-105 shadow-lg"
+                  >
+                    {showAllFeedbacks ? (
+                      <>
+                        <span>Show Less</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        <span>Show More ({validFeedbacks.length - 6} more)</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+
+              {/* ✅ SHARE FEEDBACK BUTTON */}
+              {isAuthenticated && (
+                <div className="text-center mt-4 sm:mt-6">
                   <Link
                     to="/feedback"
                     className="inline-block bg-gradient-to-r from-green-600 to-blue-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:from-green-700 hover:to-blue-700 transition transform hover:scale-105 shadow-lg"
